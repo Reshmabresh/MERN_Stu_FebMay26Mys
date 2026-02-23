@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>House</title>
+<style>
+/*Sticky Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: black;
+  padding: 10px;
+  z-index: 1000;
+}
+.navbar a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+  transition: 0.3s;   /*transition effect*/
+}
+.navbar a:hover {
+  color: yellow;
+}
+/*z-index overlapping */
+.box1, .box2 {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+}
+.box1 {
+  background: red;
+  top: 120px;
+  left: 40px;
+  z-index: 1;
+}
+.box2 {
+  background: blue;
+  top: 160px;
+  left: 80px;
+  z-index: 2;
+}
+/*Fixed Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+/*Button hover animation */
+.btn {
+  margin: 40px;
+  padding: 10px 20px;
+  background: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.btn:hover {
+  transform: scale(1.2);
+}
+
+/*Bouncing Ball */
+.ball {
+  width: 50px;
+  height: 50px;
+  background: orange;
+  border-radius: 50%;
+  position: relative;
+  animation: bounce 1s infinite alternate;
+}
+@keyframes bounce {
+  from { top: 0; }
+  to { top: 150px; }
+}
+/* House using position relative */
+.house {
+  width: 200px;
+  height: 200px;
+  background: yellowgreen;
+  margin: 50px auto;
+  position: relative;
+  border: 3px solid black;
+}
+.roof {
+  width: 240px;
+  height: 30px;
+  background: orange;
+  position: absolute;
+  top: -30px;
+  left: -20px;
+  border: 3px solid black;
+}
+.door {
+  width: 50px;
+  height: 75px;
+  background: blue;
+  position: absolute;
+  bottom: 0;
+  left: 75px;
+  border: 3px solid black;
+}
+.window1 {
+  width: 30px;
+  height: 60px;
+  background: yellow;
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  border: 3px solid black;
+}
+
+.window2 {
+  width: 25px;
+  height: 40px;
+  background: purple;
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  border: 3px solid black;
+}
+</style>
+</head>
+<body>
+<!-- House -->
+<div class="house">
+  <div class="roof"></div>
+  <div class="door"></div>
+  <div class="window1"></div>
+  <div class="window2"></div>
+</div>
+</body>
+</html>
