@@ -17,11 +17,11 @@ function getOrders(userId){
 
 async function showUserAndOrders(){
     const user = await getUser();
-    console.log("User loaded: ",user.name);
+    //console.log("User loaded: ",user.name);
 
-    const orders = getOrders(user.id);
+    const orders = await getOrders(user.id);
     console.log("Orders loaded",orders);
-    
+
 }
 
 showUserAndOrders();
