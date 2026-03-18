@@ -13,6 +13,7 @@ function loadCustomerProfile(){
     });
 }
 
+
 function showCustomerProfile(){
     try{
     const message = loadCustomerProfile();
