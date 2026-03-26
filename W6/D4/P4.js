@@ -25,7 +25,7 @@ const server = http.createServer(function(req,res){
         return;
     }
     // POST = create
-    // curl -X POST http://localhost:3001/users
+    // curl -X POST http:localhost:3001/users
     // curl: Client URL: free,open src cli tool used to trasnfer data to or 
     // from a server using various network protocol.
     if (req.method === "POST" && req.url ==="/users") {
