@@ -10,7 +10,7 @@ app.get("/users",function(req,res){
 
 //To create 
 app.post("/users",function(req,res){
-    //res.status() sets the HTTP status code before 
+    //res.status() sets the HTTP status code before sending the response body
     res.status(201).send("User created.");
 });
 
