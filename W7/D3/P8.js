@@ -1,13 +1,10 @@
-// JWT flow with login, refresh-style logic ans secure verification and secure verification
-
-const jwt = require("jsonwebtoken");
+//JWT flow with login, refresh-style logic and secure verification
 const express = require("express");
-
+const jwt = require("jsonwebtoken");
 const app = express();
 app.use(express.json());
-
-const secretKey = "MySecretKey";
-const refreshSecretKey = "MyNewSecretKey";
+const secretKey = "MysecretKey";
+const refreshSecretKey = "MyNewsecretKey";
 
 //in-memory storage for refresh token
 const refreshTokens = [];
@@ -21,7 +18,6 @@ function authenticateAccessToken(req,res,next){
         });
     }
     try{
-        // verify the token and attach trusted user data to the request
         req.user = jwt.verify(token,secretKey,{
             algorithms:["HS256"],
             issuer:"jwt-example"
@@ -37,7 +33,7 @@ function authenticateAccessToken(req,res,next){
         }
         return res.status(401).json({
             success:false,
-            message:"Access token in invalid"
+            message:"Access token is invalid"
         });
     }
 }
@@ -55,24 +51,24 @@ app.post("/login",function(req,res){
         role:"member"
     },secretKey,{expiresIn:"10m",algorithm:"HS256",issuer:"jwt-example"}
 );
-const refreshToken = jwt.sign({
-    userId:101,
-    email:email
-},refreshSecretKey,{expiresIn:"10d",
-    //d:days,m:minutes,h:hours
-    algorithm:"HS256",issuer:"jwt-example"}
+    const refreshToken = jwt.sign({
+        userId:101,
+        email:email
+    },refreshSecretKey,{expiresIn:"10d",//d:days,m:minutes,h:hours
+        algorithm:"HS256",issuer:"jwt-example"}
 );
 refreshTokens.push(refreshToken);
 res.json({
     success:true,
-    message:"login successful",
+    message:"login successfull",
     accessToken:accessToken,
-    refreahToken:refreshToken
+    refreshToken:refreshToken
 });
 });
+
 app.post("/refresh",function(req,res){
     const {refreshToken} = req.body;
-    if(!refreahTokens || !refreshTokens.includes(refreshToken)){
+    if(!refreshToken || !refreshTokens.includes(refreshToken)){
         return res.status(401).json({
             success:false,
             message:"Refresh token is missing or invalid"
@@ -101,13 +97,14 @@ app.post("/refresh",function(req,res){
         });
     }
 });
-    app.get("/me",authenticateAccessToken,function(req,res){
-        res.json({
-            success:true,
-            message:"Protected user route",
-            user:req.user
-        });
+app.get("/me",authenticateAccessToken,function(req,res){
+    res.json({
+        success:true,
+        message:"Protected user route",
+        user:req.user
     });
-    app.listen(4000,function(){
-    console.log("JWT protected route server running @ http://localhost:4000");
+});
+
+app.listen(4000,function(){
+    console.log("JWT demo server running @ http://localhost:4000");
 });
