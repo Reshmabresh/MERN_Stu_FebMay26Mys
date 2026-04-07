@@ -1,8 +1,7 @@
-// Session security, regeneration,expiration and layout
+// Session security, regeneration,expirconst 
 const express = require("express");
 const session = require("express-session");
 
-const app = express();
 
 app.use(session({
     secret: "MySecretKey",
