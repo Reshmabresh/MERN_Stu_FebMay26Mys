@@ -1,0 +1,7 @@
+//Middleware for req log
+function loggerMiddleware(req,res,next){
+    console.log('${req.method} ${req.originalUrl}');
+    next();
+}
+module.exports = looggerMiddleware;
+//Task: write the log to a file along with timestamp
