@@ -13,6 +13,8 @@ function loginUser(req,res,next){
         if (!email || !password) {
             return next(new CustomError("email/password are required.",400));
         }
+        console.log(users);
+        
         const user = users.find((u)=>u.email === email && u.password === password);
 
         if(!user){
@@ -67,6 +69,8 @@ function logoutUser(req,res,next){
         });
     }
     catch(error){
+        console.log(error);
+        
         next(error);
     }
 }
