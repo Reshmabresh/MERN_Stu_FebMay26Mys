@@ -1,0 +1,17 @@
+// Handling requests related to bookings
+const express = require("express");
+const { authMiddleware } = require("../middleware/authMiddleware");
+const {
+    bookingValidationHandler,
+    createBooking,
+    getAllBookings,
+    getMyBookings
+} = require("../controllers/bookingController");
+const roleMiddleware = require("../middleware/roleMiddleware");
+
+const router = express.Router();
+
+//create a booking/ to book ticket/s
+router.post("/bookings",authMiddleware,bookingValidationHandler,createBooking);
+router.get("/bookings",authMiddleware,roleMiddleware("admin"),getAllBookings);
+module.exports = router;
