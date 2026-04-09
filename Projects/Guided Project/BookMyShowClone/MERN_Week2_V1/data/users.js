@@ -15,3 +15,4 @@ const users = [
         role:"admin"
     }
 ]
+module.exports = users;
