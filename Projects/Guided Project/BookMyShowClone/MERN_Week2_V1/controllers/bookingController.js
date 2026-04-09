@@ -1,6 +1,6 @@
 // Does the ticket booking
 const movies = require("../data/movies");
-const CustomError = require("../utils/CustomError");
+const CustomError = require("../utils/customError");
 
 const bookings = [];
 
