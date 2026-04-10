@@ -1,4 +1,4 @@
-// Connecting to MongoDb to NodeJS using Mongoose and 
+// Connecting to MongoDb to NodeJS using Mongoose and defining schema and models
 const mongoose = require("mongoose");
 
 async function main(){
