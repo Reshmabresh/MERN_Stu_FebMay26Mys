@@ -28,7 +28,7 @@ async function runValidationDemo(){
 
         // await invalidUser.validate();
         const validUser = new User({
-            name:"Rakesh",
+            name:"Ahalya",
             age:19,
             role:"admin",
             email:"r@r.com"
