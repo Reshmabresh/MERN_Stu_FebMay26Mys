@@ -1,4 +1,4 @@
-//
+//Connection request handler
 const emitter = require("./events");
 
 const requests = [];
