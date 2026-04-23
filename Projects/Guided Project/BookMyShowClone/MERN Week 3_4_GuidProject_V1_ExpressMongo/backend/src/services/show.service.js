@@ -1,4 +1,4 @@
-const Show = require("../mpdels/Show");
+const Show = require("../models/Show");
 const Movie = require("../models/Movie");
 
 // Generate Seats
@@ -20,14 +20,13 @@ const generateSeats = (totalSeats) =>{
     return seats;
 };
 //Create Show
-
 exports.createShow = async ({movieId,date,time,totalSeats}) => {
     // check if movie exists
     const movie = await Movie.findById(movieId);
     if(!movie)
-        throw new Error("Movie not found");
+        throw new Error("Movie not found");;
 
-    // Generate Seats
+    // Generate seats
     const seats = generateSeats(totalSeats);
 
     const show = await Show.create({
@@ -38,10 +37,10 @@ exports.createShow = async ({movieId,date,time,totalSeats}) => {
         availableSeats:totalSeats,
         seats,
     });
-    return show;
+    return show; 
 };
 
-// Get Show
+//Get shows
 exports.getShows = async ({movieId,date}) => {
     const filter = {isActive:true};
 
@@ -49,18 +48,19 @@ exports.getShows = async ({movieId,date}) => {
     if(date) filter.date = new Date(date);
 
     const shows = await Show.find(filter)
-    .populate("movieId")
-    .sort({date:1});
+        .populate("movieId")
+        .sort({date:1});
 
     return shows;
 };
 
-//Get show by Id
+// Get show by Id
 exports.getShowById = async (id) => {
     const show = await Show.findById(id).populate("movieId");
     if(!show)
         throw new Error("Show not found");
-    return show;
+
+    return show;        
 };
 
 //Update show
@@ -71,16 +71,17 @@ exports.updateShow = async(id,data)=>{
     });
     if(!show)
         throw new Error("Show not found");
-    return show;
+
+    return show;  
 };
-//Delete Show
-exports.deleteShow = async (id) => {
-    //Soft delete
+
+// Delete show -- soft delete
+exports.deleteShow = async(id)=>{
     const show = await Show.findByIdAndUpdate(id,{
         isActive:false,
     });
-
     if(!show)
         throw new Error("Show not found");
 };
-//Created CRUD operations functions on shows and exported it
+
+//Created CURD operation functions on shows and exported it
