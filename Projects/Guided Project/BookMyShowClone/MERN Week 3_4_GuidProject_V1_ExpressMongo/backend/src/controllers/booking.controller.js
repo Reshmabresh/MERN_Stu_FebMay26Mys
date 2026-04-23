@@ -1,6 +1,6 @@
-const bookingService
+const bookingService = require("../services/booking.service");
 
-
+// Create booking
 exports.createBooking = async (req,res,next) => {
     try{
         const booking = await bookingService.createBooking(
@@ -9,7 +9,7 @@ exports.createBooking = async (req,res,next) => {
         );
         res.status(201).json({
             success:true,
-            meassage:"Booking confirmed.",
+            message:"Booking confirmed.",
             data:booking,
         });
     }
@@ -21,18 +21,32 @@ exports.createBooking = async (req,res,next) => {
 // Get bookings
 exports.getMyBookings = async (req,res,next) => {
     try{
-        const bookings = await bookingsService.getUserBookings(req.user._id);
-        req.user._id,
-            req.body
-        
-        res.status(201).json({
+        const bookings = await bookingService.getUserBookings(req.user._id);
+        res.status(200).json({
             success:true,
-            meassage:"Booking confirmed.",
-            data:booking,
+            message:"Bookings fetched.",
+            data:bookings,
         });
-
     }
     catch(error){
         next(error);
     }
-}
+};
+
+// cancel booking
+exports.cancelBooking = async (req,res,next) => {
+    try{
+        await bookingService.cancelBooking(req.params.id,req.user._id);
+        res.status(200).json({
+            success:true,
+            message:"Bookings cancelled.",
+            data:bookings,
+        });
+    }
+    catch(error){
+        next(error);
+    }
+};
+
+
+// Controller for creation, cancel and get bookings is added
