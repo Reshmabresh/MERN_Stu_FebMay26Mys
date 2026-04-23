@@ -36,7 +36,7 @@ exports.login = async(req,res,next) => {
     try{
         const result = await authService.loginUser(req.body);
 
-        res.status(200).json({
+        return res.status(200).json({
             success:true,
             message:"Login Successful",
             data:result,
@@ -46,3 +46,4 @@ exports.login = async(req,res,next) => {
         next(error);
     }
 };
+//Controller function Create with respect to auth
