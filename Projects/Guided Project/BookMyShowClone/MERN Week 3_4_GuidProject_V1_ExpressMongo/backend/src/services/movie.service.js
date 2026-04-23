@@ -1,4 +1,4 @@
-const movie = require("../models/Movie");
+const Movie = require("../models/Movie");
 
 // Create Movie
 exports.createMovie = async (data) => {
@@ -60,7 +60,7 @@ exports.updateMovie = async (id,data) => {
     return movie;
 };
 // Delete Movie
-exports,deleteMovie = async (id) => {
+exports.deleteMovie = async (id) => {
     //Soft delete
     const movie = await Movie.findByIdAndUpdate(id,{
         isActive:false,
@@ -68,6 +68,6 @@ exports,deleteMovie = async (id) => {
 
     if(!movie)
         throw new Error("Movie not found");
-}
+};
 
-//Created CURD functions for Movie and exported
+//Created CURD functions for Movie and exported 
