@@ -9,8 +9,11 @@ asyncFetchBtn.addEventListener("click",
             if(!response.ok) throw new Error("HTTP error: "+response.status);
             const users = await response.json();
             console.log(users);
+            // give id number as 1 to 3 it provide range of value in the date(slicing the data)
             const firstThree = users.slice(0,3);
+            //Print inside the browser
             output.textContent = JSON.stringify(firstThree,null,2);
+            // const
         }
         catch(error){
             output.textContent = "Error:"+error.message;
