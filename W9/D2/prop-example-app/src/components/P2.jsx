@@ -16,7 +16,7 @@ export function PropDestructuring(){
     return(
         <>
         <h2>Prop Destructuring</h2>
-        <UserProfile username="Rakesh" skill="React" />
+        <UserProfile username="Reshma" skill="React" />
         </>
     );
 }
