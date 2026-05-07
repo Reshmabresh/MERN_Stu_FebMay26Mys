@@ -11,6 +11,5 @@ const sessionStore = {
 //Simulated browser cookie value
 const browerCookieSessionId = "abc123";
 
-
 const sessionData = sessionStore[browerCookieSessionId]
 console.log("Server-side session data:",sessionData);
