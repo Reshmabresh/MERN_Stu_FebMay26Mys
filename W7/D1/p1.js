@@ -1,4 +1,4 @@
-// Basic of ExpressJS - setup
+// Basics of ExpressJS - setup
 // npm init -y
 // npm install express
 
@@ -9,9 +9,9 @@ const express = require("express");
 //This object is used to register routes and middleware
 const app = express();
 
-//app.get() handles GET requestes for a specific path
+//app.get() handles GET requests for a specific path
 app.get("/",function(req,res){
-    //res.send() sends a responses body and 
+    //res.send() sends a response body and 
     //ends the request automatically
     res.send("Hello from express server");
 });
