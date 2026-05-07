@@ -1,8 +1,8 @@
-//Middleware chaining and error-handling middleware
+// Middleware chaining and error-handling middleware
 const express = require("express");
 const app = express();
 
-//First middleware :eg: authentication
+//First middleware : eg: authentication
 //Global middleware
 app.use(function(req,res,next){
     console.log("Request:",req.method,req.url);
@@ -19,7 +19,7 @@ app.get("/ok",function(req,res){
     });
 });
 app.get("/fail",function(req,res,next){
-    next(new Error("Route failure"));
+    next(new Error("Route failure."));
 });
 //Error-handling : global error handler
 app.use(function(error,req,res,next){
