@@ -7,21 +7,22 @@ app.get("/",function(req,res){
 });
 
 app.get("/check",function(req,res,next){
-    try{ //Synchronous validation check
+    try{//Synchronous validation check
         if(!req.query.id) {
             throw new Error("Query parameter 'id' is required");
         }
+
         res.json({
             success:true,
             id:req.query.id
-        });  
+        });
     }
     catch(error){
-        // Forward the error to centralized error middleware
+        //Forward the error to centralized error middleware
         next(error);
-    };
+    }
 });
-//Centralized error handling middleware
+//Centalized error handling middleware
 app.use(function(error,req,res,next){
     res.status(400).json({
         success:false,
@@ -31,5 +32,3 @@ app.use(function(error,req,res,next){
 app.listen(4000,function(){
     console.log("Express server running at http://localhost:4000");
 });
-
-//http://localhost:4000/check?id=10
