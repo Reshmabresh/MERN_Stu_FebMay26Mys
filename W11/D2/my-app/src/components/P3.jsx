@@ -1,14 +1,13 @@
 // Multiple Dynamic Params
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
 
-export function MultipleDynamicParams(){
-    const { userId, orderId } = useParams();
-
+export function MultipleDynamicParams() {
+    const { userId,orderId} = useParams();
     return(
         <div>
             <h2>Multiple Dynamic Params</h2>
-            <p>User Id from URL : {userId}</p>
-            <p>Order Id from UPL : {orderId}</p>
+            <p>User ID from URL  : {userId} </p>
+            <p>orderId from URL  : {orderId} </p>
         </div>
-    );
+    );    
 }
